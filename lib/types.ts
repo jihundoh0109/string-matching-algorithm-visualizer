@@ -1,8 +1,9 @@
 export type Step = {
-  char: string | null;
+  textChar: string;
+  patternChar: string | null;
   isBeingCompared: boolean;
-  isMatch?: boolean;
-}[];
+  isMatch: boolean;
+};
 
 export type Progress = Step[][];
 
