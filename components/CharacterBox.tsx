@@ -1,30 +1,36 @@
 type CharacterBoxType = {
-  character: string;
-  isText: boolean;
-  showMore: boolean;
+  textCharacter: string;
+  patternCharacter: string | null;
+  isBeingCompared: boolean;
+  isMatch: boolean;
 };
 
 export default function CharacterBox({
-  character,
-  isText,
-  showMore,
+  textCharacter,
+  patternCharacter,
+  isBeingCompared,
+  isMatch,
 }: CharacterBoxType) {
   return (
     <div className="h-[130px] space-y-1">
       <div
         className={`w-[50px] h-[50px] flex justify-center items-center border border-black text-3xl ${
-          isText ? "bg-slate-200" : "bg-green-500"
+          isBeingCompared ? "bg-slate-400" : "bg-slate-200"
         }`}
       >
-        {character}
+        {textCharacter}
       </div>
-      {showMore && (
+      {patternCharacter && (
         <div
           className={`w-[50px] h-[50px] flex justify-center items-center border border-black text-3xl ${
-            isText ? "bg-green-200" : "bg-green-500"
+            isBeingCompared
+              ? isMatch
+                ? "bg-green-400"
+                : "bg-red-400"
+              : "bg-green-200"
           }`}
         >
-          {character}
+          {patternCharacter}
         </div>
       )}
     </div>

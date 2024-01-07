@@ -3,10 +3,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useUserInput } from "@/context/UserInputProvider";
+import { useVisualization } from "@/context/VisualizationProvider";
+import { bruteForce } from "@/lib/algorithms";
+import { SearchResult } from "@/lib/types";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
 import {
-  Form,
   FormControl,
   FormField,
   FormItem,
@@ -17,10 +19,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup } from "@/components/ui/radio-group";
 
-export default function Sidebar() {
-  const { setText, setPattern, setAlgorithm } = useUserInput();
+const algorithmMap: {
+  [key: string]: (text: string, pattern: string) => SearchResult;
+} = {
+  "brute-force": bruteForce,
+  "knuth-morris-pratt": bruteForce,
+  "rabin-karp": bruteForce,
+};
 
-  const formSchema = z.object({
+const formSchema = z
+  .object({
     text: z.string().min(1, {
       message: "Please enter a text",
     }),
@@ -30,7 +38,15 @@ export default function Sidebar() {
     algorithm: z.string().min(1, {
       message: "Please select an algorithm",
     }),
+  })
+  .refine((data) => data.text.length >= data.pattern.length, {
+    message: "Pattern can't be longer than text",
+    path: ["pattern"],
   });
+
+export default function Sidebar() {
+  const { setSearchResult, setCurrentProgressIndex, setVisualizationActive } =
+    useVisualization();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,9 +58,11 @@ export default function Sidebar() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setText(values.text);
-    setPattern(values.pattern);
-    setAlgorithm(values.algorithm);
+    const { algorithm, text, pattern } = values;
+
+    setSearchResult(algorithmMap[algorithm](text, pattern));
+    setCurrentProgressIndex(0);
+    setVisualizationActive(true);
   }
 
   return (
@@ -90,11 +108,11 @@ export default function Sidebar() {
                         <input
                           type="radio"
                           name="algorithm"
-                          value="naive"
+                          value="brute-force"
                           onChange={field.onChange}
                         />
                       </FormControl>
-                      <FormLabel className="font-normal">Naive</FormLabel>
+                      <FormLabel className="font-normal">Brute Force</FormLabel>
                     </FormItem>
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
