@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useVisualization } from "@/context/VisualizationProvider";
-import { bruteForce } from "@/lib/algorithms";
+import { bruteForce, kmp } from "@/lib/algorithms";
 import { SearchResult } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -23,7 +23,7 @@ const algorithmMap: {
   [key: string]: (text: string, pattern: string) => SearchResult;
 } = {
   "brute-force": bruteForce,
-  "knuth-morris-pratt": bruteForce,
+  "knuth-morris-pratt": kmp,
   "rabin-karp": bruteForce,
 };
 
