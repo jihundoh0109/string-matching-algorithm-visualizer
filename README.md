@@ -4,7 +4,7 @@
 </div>
 <div align="center">
 
-<a href="">[![GitHub Repo stars](https://img.shields.io/github/stars/jihundoh0109/string-search-visualizer?logo=github&color=green)](https://github.com/jihundoh0109/jdtodo)</a>
+<a href="">[![GitHub Repo stars](https://img.shields.io/github/stars/jihundoh0109/string-search-visualizer?logo=github&color=green)](https://github.com/jihundoh0109/string-search-visualizer)</a>
 &nbsp;
 <a href="">[![Stack Overflow Badge](https://img.shields.io/badge/tweet-%2523F7DF1E?style=social&logo=twitter&logoColor=%231D9BF0&color=blue)](https://twitter.com/intent/tweet?text=&url=https%3A%2F%2Fgithub.com%2Fjihundoh0109%2Fstring-search-visualizer)</a>
 
