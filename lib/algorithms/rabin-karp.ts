@@ -1,7 +1,7 @@
 import { progress, clearProgress, createGrid } from "@/lib/utils";
 import { SearchResult } from "@/lib/types";
 
-const HASH_BASE = 101;
+const HASH_BASE = 2;
 
 function calculateHash(str: string) {
   let hashValue = 0;

@@ -14,13 +14,12 @@
 
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
-- [Algorithms](#algorithms)
 - [Installation and Setup](#installation-and-setup)
 - [Get in Touch](#get-in-touch)
 
 ## Project Overview
 
-TODO
+Understanding string search algorithms can be a challenge. To gain a deeper insight into these algorithms, it's crucial to not only understand their underlying principles but also trace their step-by-step execution. This project aims to help visualize some of the popular string search algorithms, making it easier to grasp their inner workings. In particular, we dive deep into the following three algorithms: brute-force, Knuth-Morris-Pratt (KMP), and Rabin-Karp. 
 
 ## Tech stack
 
@@ -32,11 +31,7 @@ TODO
   <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-%2306B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 </p>
 
-
-## Algorithms
-TODO 
-
-## Installation and Setup 
+## Installation and Setup
 
 Fork this repository and clone it locally. Once completed, follow these steps:
 
